@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
 using Onova.Exceptions;
 using Onova.Internal;
 
@@ -45,16 +45,16 @@ namespace Onova.Services
         {
             // Get all available resources
             var response = await _httpClient.GetStringAsync(_serviceIndexUrl);
-            var resourcesJson = JToken.Parse(response)["resources"];
+            var resourcesJson = JsonDocument.Parse(response).RootElement.GetProperty("resources");
 
             // Get URL of the required resource
             var expectedResourceType = "PackageBaseAddress/3.0.0";
-            foreach (var resourceJson in resourcesJson)
+            foreach (var resourceJson in resourcesJson.EnumerateArray())
             {
                 // Check resource type
-                var resourceType = resourceJson["@type"].Value<string>();
+                var resourceType = resourceJson.GetProperty("@type").GetString();
                 if (resourceType == expectedResourceType)
-                    return resourceJson["@id"].Value<string>();
+                    return resourceJson.GetProperty("@id").GetString();
             }
 
             // Resource not found
@@ -70,13 +70,13 @@ namespace Onova.Services
             // Get versions
             var request = $"{resourceUrl}/{PackageIdNormalized}/index.json";
             var response = await _httpClient.GetStringAsync(request);
-            var versionsJson = JToken.Parse(response)["versions"];
+            var versionsJson = JsonDocument.Parse(response).RootElement.GetProperty("versions");
             var versions = new HashSet<Version>();
 
-            foreach (var versionJson in versionsJson)
+            foreach (var versionJson in versionsJson.EnumerateArray())
             {
                 // Try to parse version
-                var versionText = versionJson.Value<string>();
+                var versionText = versionJson.GetString();
                 if (!Version.TryParse(versionText, out var version))
                     continue;
 

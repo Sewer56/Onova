@@ -48,7 +48,9 @@ namespace Onova.Tests
                 Directory.Delete(StorageDirPath, true);
         }
 
+        // Excluded for .NET Core because Core outputs DLLs, which cannot be directly executed by the test suite.
         [Test]
+        [Platform(Exclude = "NETCORE")]
         public async Task UpdateManager_CheckPerformUpdateAsync_Test()
         {
             using (var dummyEnvironment = new DummyEnvironment(TempDirPath))
