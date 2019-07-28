@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
-    <Version>2.4.5</Version>
+    <Version>2.4.6</Version>
     <Company>Tyrrrz</Company>
     <Authors>Tyrrrz, Sewer56</Authors>
     <Copyright>Copyright (C) Alexey Golub, Sewer56</Copyright>
