@@ -2,22 +2,24 @@
 
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
-    <Version>2.4.3</Version>
+    <Version>2.4.5</Version>
     <Company>Tyrrrz</Company>
-    <Authors>$(Company)</Authors>
-    <Copyright>Copyright (C) Alexey Golub</Copyright>
-    <Description>Compact and extensible auto-update library</Description>
+    <Authors>Tyrrrz, Sewer56</Authors>
+    <Copyright>Copyright (C) Alexey Golub, Sewer56</Copyright>
+    <Description>Compact and extensible auto-update library.
+Custom fork for Reloaded Mod Loader II</Description>
     <PackageTags>auto update</PackageTags>
-    <PackageProjectUrl>https://github.com/Tyrrrz/Onova</PackageProjectUrl>
-    <PackageReleaseNotes>https://github.com/Tyrrrz/Onova/blob/master/Changelog.md</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/Sewer56/Onova/tree/reloaded-ii</PackageProjectUrl>
+    <PackageReleaseNotes>https://github.com/Sewer56/Onova/commits/reloaded-ii</PackageReleaseNotes>
     <PackageIconUrl>https://raw.githubusercontent.com/Tyrrrz/Onova/master/favicon.png</PackageIconUrl>
     <PackageLicenseExpression>LGPL-3.0-only</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/Tyrrrz/Onova</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Sewer56/Onova/tree/reloaded-ii</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <DocumentationFile>bin/$(Configuration)/$(TargetFramework)/$(AssemblyName).xml</DocumentationFile>
     <LangVersion>latest</LangVersion>
+    <PackageId>Onova.rii</PackageId>
   </PropertyGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
